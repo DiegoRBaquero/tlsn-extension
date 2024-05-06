@@ -18,5 +18,15 @@
     "description": "Notarize ownership of a reddit profile. To start, go to reddit.com/settings",
     "responseSelector": "(?<=\"displayText\": )\"(.*?)\"",
     "valueTransform": "\"displayText\": %s"
+  },
+  {
+    "url": "https://chatgpt.com/api/auth/session",
+    "targetUrl": "https://chatgpt.com",
+    "method": "GET",
+    "type": "xmlhttprequest",
+    "title": "ChatGPT Account",
+    "description": "Notarize ownership of a ChatGPT account. To start, go to chatgpt.com",
+    "responseSelector": "(?<=\"email\":)\"(.*?)\"",
+    "valueTransform": "\"email\":%s"
   }
 ]

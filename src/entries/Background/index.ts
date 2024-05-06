@@ -1,6 +1,13 @@
-import { onBeforeRequest, onResponseStarted, onSendHeaders } from './handlers';
+import {
+  onBeforeRequest,
+  onCompletedForNotarization,
+  onResponseStarted,
+  onSendHeaders,
+} from './handlers';
 import { deleteCacheByTabId } from './cache';
 import browser from 'webextension-polyfill';
+
+import bookmarks from '../../../utils/bookmark/bookmarks.json';
 
 (async () => {
   browser.webRequest.onSendHeaders.addListener(
@@ -18,6 +25,11 @@ import browser from 'webextension-polyfill';
     },
     ['requestBody'],
   );
+
+  browser.webRequest.onCompleted.addListener(onCompletedForNotarization, {
+    urls: bookmarks.map((b) => `${b.url}*`),
+    types: bookmarks.map((b) => b.type as browser.WebRequest.ResourceType),
+  });
 
   browser.webRequest.onResponseStarted.addListener(
     onResponseStarted,

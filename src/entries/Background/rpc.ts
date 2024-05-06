@@ -202,7 +202,7 @@ async function handleRetryProveReqest(
   return sendResponse();
 }
 
-async function handleProveRequestStart(
+export async function handleProveRequestStart(
   request: BackgroundAction,
   sendResponse: (data?: any) => void,
 ) {
