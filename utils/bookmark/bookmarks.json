@@ -28,5 +28,25 @@
     "description": "Notarize ownership of a ChatGPT account. To start, go to chatgpt.com",
     "responseSelector": "(?<=\"email\":)\"(.*?)\"",
     "valueTransform": "\"email\":%s"
+  },
+  {
+    "url": "https://news.ycombinator.com/user",
+    "targetUrl": "https://news.ycombinator.com",
+    "method": "GET",
+    "type": "main_frame",
+    "title": "Hacker News Account",
+    "description": "Notarize ownership of a Hacker News account. To start, go to news.ycombinator.com",
+    "responseSelector": "<a id=.me. href=.user\\?id=(.*).>(.*)</a>.*karma",
+    "valueTransform": "\"id\":%s"
+  },
+  {
+    "url": "https://ipinfo.io/account/profile",
+    "targetUrl": "https://ipinfo.io",
+    "method": "GET",
+    "type": "xmlhttprequest",
+    "title": "IPInfo Profile",
+    "description": "Notarize ownership of an IPInfo profile. To start, go to your own profile",
+    "responseSelector": "(?<=\"email\": )\"(.*?)\"",
+    "valueTransform": "\"email\":%s"
   }
 ]
